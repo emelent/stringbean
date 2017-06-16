@@ -64,7 +64,6 @@ DayViewEvent.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
     padding: 10,
     height: 100,
   },
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
     backgroundColor: indicatorColor,
   },
   indicator: {
-    marginTop: -30,
+    marginTop: 10,
     backgroundColor: indicatorColor,
     borderRadius: 100,
     borderWidth: 1,
@@ -95,6 +94,7 @@ const styles = StyleSheet.create({
     height: 12
   },
   time: {
+    marginTop: 2,
     width: 55,
     fontFamily: 'Quicksand-Regular',
     fontSize: 16,

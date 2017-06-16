@@ -37,7 +37,7 @@ TitleBar.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    height: 90,
+    height: 80,
     flexDirection: 'row',
     //backgroundColor: 'skyblue',
     paddingTop: 20,

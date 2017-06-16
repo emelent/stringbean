@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-const indicatorColor = '#888';
+const indicatorColor = '#aaa';
 
 class DayViewEvent extends Component {
   constructor(props) {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   bar: {
     position: 'absolute',
-    width: 1,
+    width: 2,
     left: 68,
     height: 100,
     backgroundColor: indicatorColor,
@@ -72,16 +72,16 @@ const styles = StyleSheet.create({
   indicator: {
     backgroundColor: indicatorColor,
     borderRadius: 100,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: indicatorColor,
-    width: 7,
-    height: 7
+    width: 8,
+    height: 8
   },
   indicatorActive: {
-    marginLeft: -1,
+    marginLeft: -2,
     backgroundColor: '#fff',
-    width: 10,
-    height: 10
+    width: 12,
+    height: 12
   },
   time: {
     width: 55,

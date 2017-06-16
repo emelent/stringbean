@@ -1,4 +1,6 @@
 <resources>
+    <string moduleConfig="true" name="mobileCenterCrashes_whenToSendCrashes">ALWAYS_SEND</string>
+    <string moduleConfig="true" name="mobileCenterAnalytics_whenToEnableAnalytics">ALWAYS_SEND</string>
     <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">JD4dQuwQsMmVDNUro5ocrrnaihXVf007fd19-c23b-4349-a715-1088f641c1bc</string>
     <string name="app_name">stringbean</string>
 </resources>

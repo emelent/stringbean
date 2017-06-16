@@ -16,7 +16,7 @@ import DVL from './components/DayViewLayout';
 import DVL2 from  './components2/DayViewLayout'
 import codePush from "react-native-code-push";
 
-
+const version = '0.4.12';
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   updateDialog: {
@@ -35,7 +35,7 @@ export default class stringbean extends Component {
           backgroundColor="white"
           barStyle="dark-content"
         />
-        <Text style={{marginLeft: 10}}>Version 0.4.11</Text>
+        <Text style={{marginLeft: 10}}>Version {version}</Text>
         <DVL />
       </View>
     );

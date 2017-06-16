@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   fade: {
     zIndex: 1,
     position: 'absolute',
-    top: 100,
+    top: 90,
     left: 0,
     height: 30,
     width

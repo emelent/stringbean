@@ -24,17 +24,17 @@ class DayViewEvent extends Component {
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
 
     return (
-      <TouchableOpacity style={[styles.container, style]}
-        onPress={this.showEvent}
-      >
+      <View style={[styles.container, style]}>
         <View style={styles.bar} />
         <Text style={styles.time}>{time}</Text>
         <View style={indicatorStyle} />
-        <View style={styles.detailsContainer}>
+        <TouchableOpacity style={styles.detailsContainer} 
+          onPress={this.showEvent}
+        >
           <Text style={[styles.event, {color}]}>{event}</Text>
           <Text style={styles.place}>{place}</Text>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     );
   }
 };
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   bar: {
     position: 'absolute',
-    width: 2,
+    width: 1,
     left: 68,
     height: 100,
     backgroundColor: indicatorColor,
@@ -74,14 +74,14 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     borderWidth: 1,
     borderColor: indicatorColor,
-    width: 8,
-    height: 8
+    width: 7,
+    height: 7
   },
   indicatorActive: {
     marginLeft: -1,
     backgroundColor: '#fff',
-    width: 12,
-    height: 12
+    width: 10,
+    height: 10
   },
   time: {
     width: 55,

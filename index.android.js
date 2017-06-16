@@ -13,7 +13,6 @@ import {
   View
 } from 'react-native';
 import DVL from './components/DayViewLayout';
-import DVL2 from  './components2/DayViewLayout'
 import codePush from "react-native-code-push";
 
 const version = '0.4.16';

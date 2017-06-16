@@ -21,21 +21,26 @@ class DayViewEvent extends Component {
 
   render() {
     const {color, time, place, event, type, active, hideType, style} = this.props;
+
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
+    const timeStyle = (active)? [styles.time, {color}] : styles.time;
+    const eventStyle = (active)? [styles.event, {color}] : [styles.event, {color}];
+    const placeStyle = (active)? [styles.place, {}] : styles.place;
+    const typeStyle = (active)? {} : {};
 
     const typeEl = (type.toLowerCase().startsWith('l') || hideType)? null: (
-      <Text style={[styles.type, {backgroundColor: color}]}>{type}</Text>
+      <Text style={[styles.type, {backgroundColor: color}, typeStyle]}>{type}</Text>
     );
     return (
       <View style={[styles.container, style]}>
         <View style={styles.bar} />
-        <Text style={styles.time}>{time}</Text>
+        <Text style={timeStyle}>{time}</Text>
         <View style={indicatorStyle} />
         <TouchableOpacity style={styles.detailsContainer} 
           onPress={this.showEvent}
           activeOpacity={0.5}
         >
-          <Text style={[styles.event, {color}]}>{event}</Text>
+          <Text style={eventStyle}>{event}</Text>
           <Text style={styles.place}>{place}</Text>
           {typeEl}
         </TouchableOpacity>
@@ -79,7 +84,7 @@ const styles = StyleSheet.create({
   indicator: {
     backgroundColor: indicatorColor,
     borderRadius: 100,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: indicatorColor,
     width: 8,
     height: 8

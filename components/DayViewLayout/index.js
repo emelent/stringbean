@@ -31,7 +31,7 @@ const events = [
   },
   {
     event: 'STK 120',
-    type: 'L',
+    type: 'T',
     time: '10:30',
     place: 'EMB 2-152',
     color: '#C880B7',

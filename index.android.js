@@ -16,7 +16,7 @@ import DVL from './components/DayViewLayout';
 import DVL2 from  './components2/DayViewLayout'
 import codePush from "react-native-code-push";
 
-const version = '0.4.15';
+const version = '0.4.16';
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   updateDialog: {

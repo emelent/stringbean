@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
   },
   day:{
     width: 80,
-    fontSize: 32,
+    fontSize: 28,
     fontFamily: 'Quicksand-Regular'
   },
   date: {
-    fontSize: 20,
+    fontSize: 16,
     marginTop: 12,
     fontFamily: 'Quicksand-Regular'
   },

@@ -25,9 +25,9 @@ class DayViewEvent extends Component {
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
     const timeStyle = (active)? [styles.time, {color}] : styles.time;
     const eventStyle = (active)? [styles.event, {backgroundColor: color}] : [styles.event,{backgroundColor: color}];
-
-    const typeEl = (type.toLowerCase().startsWith('l') || hideType)? null: (
-      <Text style={[styles.type, {backgroundColor: color}]}>{type}</Text>
+    const lessonType = type.toLowerCase().startsWith('l');
+    const typeEl = (lessonType || hideType)? null: (
+      <Text style={[styles.type, {}]}>{type}</Text>
     );
     return (
       <View style={[styles.container, style]}>
@@ -38,7 +38,7 @@ class DayViewEvent extends Component {
           onPress={this.showEvent}
           activeOpacity={0.5}
         >
-          <Text style={eventStyle}>{event}</Text>
+          <Text style={eventStyle}>{event} {!lessonType && `(${type})`}</Text>
           <Text style={[styles.place]}>{place}</Text>
           {typeEl}
         </TouchableOpacity>
@@ -59,7 +59,7 @@ DayViewEvent.propTypes = {
 
 DayViewEvent.defaultProps = {
   active: false,
-  hideType: false 
+  hideType: true 
 };
 const styles = StyleSheet.create({
   container: {
@@ -99,17 +99,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   event: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Quicksand-Regular',
     color: '#fff',
     borderRadius: 15,
-    paddingBottom: 2,
-    paddingLeft: 15,
-    paddingRight: 15,
+    paddingBottom: 4,
+    paddingLeft: 10,
+    paddingRight: 10,
     alignSelf: 'flex-start',
   },
   place: {
-    fontSize: 16,
+    fontSize: 14,
     borderRadius: 10,
     marginTop: 10,
     paddingBottom: 2,
@@ -123,11 +123,13 @@ const styles = StyleSheet.create({
     right: 20,
     top: 20,
     borderRadius: 100,
-    color:'#fff',
+    borderColor: indicatorColor,
+    borderWidth: 2,
     fontFamily: 'Quicksand-Bold',
     textAlign: 'center',
     padding: 5,
-    width: 30,
+    width: 35,
+    height: 35,
   }
 });
 

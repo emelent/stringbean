@@ -73,6 +73,7 @@ import com.android.build.OutputFile
  */
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -112,6 +113,9 @@ android {
         }
     }
     buildTypes {
+        debug{
+            buildConfigField "String", "CODEPUSH_KEY", '"JD4dQuwQsMmVDNUro5ocrrnaihXVf007fd19-c23b-4349-a715-1088f641c1bc"'
+        }
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
@@ -133,6 +137,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-code-push')
     compile project(':react-native-linear-gradient')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"

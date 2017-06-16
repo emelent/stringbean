@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-const indicatorColor = '#555';
+const indicatorColor = '#888';
 
 class DayViewEvent extends Component {
   constructor(props) {
@@ -27,19 +27,13 @@ class DayViewEvent extends Component {
       <TouchableOpacity style={[styles.container, style]}
         onPress={this.showEvent}
       >
-        <View style={indicatorStyle}/>
-        <View style={styles.leftContainer}>
-          <Text style={[styles.eventText, {color}]}>{event}{` (${type})`}</Text>
-          <View style={styles.timeContainer}>
-            <Text style={styles.timeText}>{time}</Text>
-            <Text style={styles.placeText}>{place}</Text>
-          </View>
+        <View style={styles.bar} />
+        <Text style={styles.time}>{time}</Text>
+        <View style={indicatorStyle} />
+        <View style={styles.detailsContainer}>
+          <Text style={[styles.event, {color}]}>{event}</Text>
+          <Text style={styles.place}>{place}</Text>
         </View>
-        {
-          //<View style={styles.rightContainer}>
-            //<View style={[styles.colorBlock, {backgroundColor: color}]} />
-          //</View>
-        }
       </TouchableOpacity>
     );
   }
@@ -60,56 +54,49 @@ DayViewEvent.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    alignItems: 'center',
     padding: 10,
     height: 100,
-    margin: 5,
   },
-  leftContainer: {
+  detailsContainer: {
     flex: 1,
-    paddingLeft: 10
+    marginLeft: 15,
   },
-  rightContainer: {
-    flex: 0.1,
-  },
-  timeContainer: {
-    flex: 1,
-    flexDirection: 'row'
+  bar: {
+    position: 'absolute',
+    width: 2,
+    left: 68,
+    height: 100,
+    backgroundColor: indicatorColor,
   },
   indicator: {
     backgroundColor: indicatorColor,
     borderRadius: 100,
     borderWidth: 1,
     borderColor: indicatorColor,
-    width: 10,
-    height: 10
+    width: 8,
+    height: 8
   },
   indicatorActive: {
+    marginLeft: -1,
     backgroundColor: '#fff',
-    marginLeft: -2,
-    width: 15,
-    height: 15
+    width: 12,
+    height: 12
   },
-  eventText: {
+  time: {
+    width: 55,
+    fontFamily: 'Quicksand-Regular',
+    fontSize: 16,
+  },
+  event: {
     fontSize: 20,
     fontFamily: 'Quicksand-Regular',
     marginBottom: 5,
   },
-  timeText: {
-    width: 80,
-    fontFamily: 'Quicksand-Bold',
-    fontSize: 16,
-  },
-  placeText: {
+  place: {
     fontSize: 16,
     fontFamily: 'Quicksand-Regular',
   },
-  colorBlock:{
-    position: 'absolute',
-    left: 20,
-    top: 10,
-    height: 24,
-    width: 3,
-  }
 });
 
 export default DayViewEvent;

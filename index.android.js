@@ -11,7 +11,20 @@ import {
   StatusBar,
   View
 } from 'react-native';
-import DayViewLayout from './components/DayViewLayout';
+import DVL from './components/DayViewLayout';
+import DVL2 from  './components2/DayViewLayout'
+import codePush from "react-native-code-push";
+
+
+const codePushOptions = {
+  checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
+  updateDialog: {
+    updateTitle: 'Update',
+    optionalUpdateMessage: 'Yo, the new-new is out, you finna update?',
+    optionalIgnoreButtonLabel: "Nah fam, I'm good",
+    optionalInstallButtonLabel: 'Hook it up',
+  }
+};
 
 export default class stringbean extends Component {
   render() {
@@ -21,7 +34,7 @@ export default class stringbean extends Component {
           backgroundColor="white"
           barStyle="dark-content"
         />
-        <DayViewLayout />
+        <DVL />
       </View>
     );
   }
@@ -34,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('stringbean', () => stringbean);
+AppRegistry.registerComponent('stringbean', () => codePush(codePushOptions)(stringbean));

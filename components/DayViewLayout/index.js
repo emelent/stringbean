@@ -16,7 +16,7 @@ const events = [
   {
     event: 'COS 132',
     type: 'L',
-    time: '08:30 PM',
+    time: '08:30',
     place: 'EMB 1-152',
     color: '#0471A6',
     active: false,
@@ -24,7 +24,7 @@ const events = [
   {
     event: 'COS 151',
     type: 'L',
-    time: '09:30 PM',
+    time: '09:30',
     place: 'EMB 1-152',
     color: '#048A81',
     active: false,
@@ -32,7 +32,7 @@ const events = [
   {
     event: 'STK 120',
     type: 'L',
-    time: '10:30 PM',
+    time: '10:30',
     place: 'EMB 2-152',
     color: '#C880B7',
     active: false,
@@ -40,7 +40,7 @@ const events = [
   {
     event: 'WTW 114',
     type: 'L',
-    time: '12:30 PM',
+    time: '12:30',
     place: 'Roos Hall',
     color: '#DD4B1A',
     active: false,
@@ -48,7 +48,7 @@ const events = [
   {
     event: 'AIM 101',
     type: 'L',
-    time: '13:30 PM',
+    time: '13:30',
     place: 'AIM Lab 5',
     color: '#414066',
     active: false,
@@ -56,7 +56,7 @@ const events = [
   {
     event: 'COS 132',
     type: 'T',
-    time: '15:30 PM',
+    time: '15:30',
     place: 'EMB 1-152',
     color: '#0471A6',
     active: true,
@@ -64,7 +64,7 @@ const events = [
   {
     event: 'COS 151',
     type: 'P',
-    time: '17:30 PM',
+    time: '17:30',
     place: 'Informatorium',
     color: '#048A81',
     active: false,
@@ -94,6 +94,7 @@ class DayViewLayout extends Component{
   render(){
     return (
       <View style={styles.container}>
+        <Text style={{marginLeft: 10}}>Version 0.4.10</Text>
         <TitleBar
           style={styles.titleBar}
           day='Wed'
@@ -102,7 +103,6 @@ class DayViewLayout extends Component{
         />
         <LinearGradient colors={['#fff', 'transparent']}  style={styles.fade}/>
         <ScrollView style={styles.dayViewContainer}>
-          <View style={styles.bar} />
           {this.renderEvents(events)}
         </ScrollView>
         <LinearGradient colors={['transparent', '#fff']}  style={styles.fade2}/>
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   fade: {
     zIndex: 1,
     position: 'absolute',
-    top: 100,
+    top: 118,
     left: 0,
     height: 30,
     width
@@ -131,18 +131,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  bar: {
-    position: 'absolute',
-    left: 19,
-    top: 0,
-    width: 1,
-    height,
-    backgroundColor: '#555'
-  },
   dayViewContainer: {
-    marginLeft: 58,
     flex: 1,
     flexDirection: 'column',
+    marginLeft: 15,
   },
   titleBar:{ 
   }

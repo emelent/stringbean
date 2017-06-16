@@ -24,12 +24,10 @@ class DayViewEvent extends Component {
 
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
     const timeStyle = (active)? [styles.time, {color}] : styles.time;
-    const eventStyle = (active)? [styles.event, {color}] : [styles.event, {color}];
-    const placeStyle = (active)? [styles.place, {}] : styles.place;
-    const typeStyle = (active)? {} : {};
+    const eventStyle = (active)? [styles.event] : [styles.event];
 
     const typeEl = (type.toLowerCase().startsWith('l') || hideType)? null: (
-      <Text style={[styles.type, {backgroundColor: color}, typeStyle]}>{type}</Text>
+      <Text style={[styles.type, {backgroundColor: color}]}>{type}</Text>
     );
     return (
       <View style={[styles.container, style]}>
@@ -41,7 +39,7 @@ class DayViewEvent extends Component {
           activeOpacity={0.5}
         >
           <Text style={eventStyle}>{event}</Text>
-          <Text style={styles.place}>{place}</Text>
+          <Text style={[styles.place, {backgroundColor: color}]}>{place}</Text>
           {typeEl}
         </TouchableOpacity>
       </View>
@@ -106,13 +104,20 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   place: {
-    fontSize: 16,
+    fontSize: 14,
+    color: '#fff',
+    borderRadius: 25,
+    marginTop: 10,
+    paddingBottom: 2,
+    paddingLeft: 15,
+    paddingRight: 15,
+    alignSelf: 'flex-start',
     fontFamily: 'Quicksand-Regular',
   },
   type: {
     position: 'absolute',
     right: 20,
-    top: 10,
+    top: 20,
     borderRadius: 100,
     color:'#fff',
     fontFamily: 'Quicksand-Bold',

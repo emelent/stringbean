@@ -24,7 +24,7 @@ class DayViewEvent extends Component {
 
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
     const timeStyle = (active)? [styles.time, {color}] : styles.time;
-    const eventStyle = (active)? [styles.event, {color}] : [styles.event];
+    const eventStyle = (active)? [styles.event, {backgroundColor: color}] : [styles.event,{backgroundColor: color}];
 
     const typeEl = (type.toLowerCase().startsWith('l') || hideType)? null: (
       <Text style={[styles.type, {backgroundColor: color}]}>{type}</Text>
@@ -39,7 +39,7 @@ class DayViewEvent extends Component {
           activeOpacity={0.5}
         >
           <Text style={eventStyle}>{event}</Text>
-          <Text style={[styles.place, {backgroundColor: color}]}>{place}</Text>
+          <Text style={[styles.place]}>{place}</Text>
           {typeEl}
         </TouchableOpacity>
       </View>
@@ -101,11 +101,15 @@ const styles = StyleSheet.create({
   event: {
     fontSize: 20,
     fontFamily: 'Quicksand-Regular',
-    marginBottom: 5,
+    color: '#fff',
+    borderRadius: 15,
+    paddingBottom: 2,
+    paddingLeft: 15,
+    paddingRight: 15,
+    alignSelf: 'flex-start',
   },
   place: {
-    fontSize: 14,
-    color: '#fff',
+    fontSize: 16,
     borderRadius: 10,
     marginTop: 10,
     paddingBottom: 2,

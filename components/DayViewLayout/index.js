@@ -94,7 +94,6 @@ class DayViewLayout extends Component{
   render(){
     return (
       <View style={styles.container}>
-        <Text style={{marginLeft: 10}}>Version 0.4.10</Text>
         <TitleBar
           style={styles.titleBar}
           day='Wed'
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
   fade: {
     zIndex: 1,
     position: 'absolute',
-    top: 118,
+    top: 100,
     left: 0,
     height: 30,
     width

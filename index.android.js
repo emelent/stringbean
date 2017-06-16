@@ -9,6 +9,7 @@ import {
   AppRegistry,
   StyleSheet,
   StatusBar,
+  Text,
   View
 } from 'react-native';
 import DVL from './components/DayViewLayout';
@@ -34,6 +35,7 @@ export default class stringbean extends Component {
           backgroundColor="white"
           barStyle="dark-content"
         />
+        <Text style={{marginLeft: 10}}>Version 0.4.11</Text>
         <DVL />
       </View>
     );

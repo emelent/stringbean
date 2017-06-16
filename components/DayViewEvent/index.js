@@ -20,9 +20,12 @@ class DayViewEvent extends Component {
   }
 
   render() {
-    const {color, time, place, event, type, active, style} = this.props;
+    const {color, time, place, event, type, active, hideType, style} = this.props;
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
 
+    const typeEl = (type.toLowerCase().startsWith('l') || hideType)? null: (
+      <Text style={[styles.type, {backgroundColor: color}]}>{type}</Text>
+    );
     return (
       <View style={[styles.container, style]}>
         <View style={styles.bar} />
@@ -30,9 +33,11 @@ class DayViewEvent extends Component {
         <View style={indicatorStyle} />
         <TouchableOpacity style={styles.detailsContainer} 
           onPress={this.showEvent}
+          activeOpacity={0.5}
         >
           <Text style={[styles.event, {color}]}>{event}</Text>
           <Text style={styles.place}>{place}</Text>
+          {typeEl}
         </TouchableOpacity>
       </View>
     );
@@ -46,10 +51,12 @@ DayViewEvent.propTypes = {
   event: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   active: PropTypes.bool,
+  hideType: PropTypes.bool,
 };
 
 DayViewEvent.defaultProps = {
-  active: false 
+  active: false,
+  hideType: false 
 };
 const styles = StyleSheet.create({
   container: {
@@ -97,6 +104,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Quicksand-Regular',
   },
+  type: {
+    position: 'absolute',
+    right: 20,
+    top: 10,
+    borderRadius: 100,
+    color:'#fff',
+    fontFamily: 'Quicksand-Bold',
+    textAlign: 'center',
+    padding: 5,
+    width: 30,
+  }
 });
 
 export default DayViewEvent;

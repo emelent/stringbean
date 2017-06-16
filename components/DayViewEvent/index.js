@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: indicatorColor,
   },
   indicator: {
+    marginTop: -30,
     backgroundColor: indicatorColor,
     borderRadius: 100,
     borderWidth: 1,

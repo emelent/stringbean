@@ -24,7 +24,7 @@ class DayViewEvent extends Component {
 
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
     const timeStyle = (active)? [styles.time, {color}] : styles.time;
-    const eventStyle = (active)? [styles.event] : [styles.event];
+    const eventStyle = (active)? [styles.event, {color}] : [styles.event];
 
     const typeEl = (type.toLowerCase().startsWith('l') || hideType)? null: (
       <Text style={[styles.type, {backgroundColor: color}]}>{type}</Text>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
   place: {
     fontSize: 14,
     color: '#fff',
-    borderRadius: 25,
+    borderRadius: 10,
     marginTop: 10,
     paddingBottom: 2,
     paddingLeft: 15,

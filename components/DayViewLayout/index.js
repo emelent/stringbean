@@ -3,8 +3,10 @@ import {
   View,
   Text,
   ScrollView,
-  StyleSheet
+  StyleSheet,
+  Animated
 } from 'react-native';
+import Interactable from 'react-native-interactable';
 import LinearGradient from 'react-native-linear-gradient';
 import Dimensions from 'Dimensions';
 
@@ -12,6 +14,8 @@ import DayViewEvent from '../DayViewEvent';
 import TitleBar from '../TitleBar';
 
 const {width, height} = Dimensions.get('window');
+const drawerWidth = 200;
+const dayViewContainerWidth = width + drawerWidth;
 const events = [
   {
     event: 'COS 132',
@@ -71,9 +75,10 @@ const events = [
   },
 ];
 
-class DayViewLayout extends Component{
+export default class DayViewLayout extends Component{
   constructor(props){
     super(props);
+    this.dX = new Animated.Value(0);
   }
 
   renderEvents(events){
@@ -86,6 +91,9 @@ class DayViewLayout extends Component{
         event={event.event}
         type={event.type}
         active={event.active}
+        dX={this.dX}
+        minX={0}
+        maxX={drawerWidth}
         key={i}
       />
     )); 
@@ -102,7 +110,23 @@ class DayViewLayout extends Component{
         />
         <LinearGradient colors={['#fff', 'transparent']}  style={styles.fade}/>
         <ScrollView style={styles.dayViewContainer}>
-          {this.renderEvents(events)}
+          <Interactable.View
+            style={styles.interact}
+            horizontalOnly={true}
+            snapPoints={[{x: 0, id: 'close'}, {x: drawerWidth, id: 'open'}]}
+            onSnap={this.onDrawerSnap}
+            animatedValueX={this.dX}
+          >
+            <View style={styles.mainContainer}>
+              <View style={styles.drawer}>
+                {/*TODO Hey put me in my own component*/}
+                <Text>I am the drawer!</Text>
+              </View>
+              <View style={styles.content}>
+                {this.renderEvents(events)}
+              </View>
+            </View>
+          </Interactable.View>
         </ScrollView>
         <LinearGradient colors={['transparent', '#fff']}  style={styles.fade2}/>
       </View>
@@ -111,6 +135,18 @@ class DayViewLayout extends Component{
 };
 
 const styles = StyleSheet.create({
+  interact: {
+    left: -drawerWidth
+  },
+  mainContainer: {
+    flexDirection: 'row'
+  },
+  drawer: {
+    width: drawerWidth,
+  },
+  content: {
+    flex: 1,
+  },
   fade: {
     zIndex: 1,
     position: 'absolute',
@@ -131,7 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   dayViewContainer: {
-    flex: 1,
+    width: dayViewContainerWidth,
     flexDirection: 'column',
     marginLeft: 15,
   },
@@ -139,4 +175,3 @@ const styles = StyleSheet.create({
   }
 });
 
-export default DayViewLayout;

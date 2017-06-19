@@ -12,17 +12,18 @@ import {
   Text,
   View
 } from 'react-native';
-import DVL from './components/DayViewLayout';
 import codePush from "react-native-code-push";
 
-const version = '0.4.20';
+import DVL from './components/DayViewLayout';
+
+const version = '0.5.0';
 const codePushOptions = {
   checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
   updateDialog: {
     updateTitle: 'Update',
-    optionalUpdateMessage: 'Yo, the new-new is out, you finna update?',
-    optionalIgnoreButtonLabel: "Nah fam, I'm good",
-    optionalInstallButtonLabel: 'Hook it up',
+    optionalUpdateMessage: 'A new update is available, would you like to install it?',
+    optionalIgnoreButtonLabel: 'Later',
+    optionalInstallButtonLabel: 'Install',
   }
 };
 

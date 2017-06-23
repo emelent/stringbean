@@ -12,6 +12,7 @@ import Dimensions from 'Dimensions';
 
 import DayViewEvent from '../DayViewEvent';
 import TitleBar from '../TitleBar';
+import Drawer from '../Drawer';
 
 const {width, height} = Dimensions.get('window');
 const drawerWidth = 200;
@@ -24,6 +25,7 @@ const events = [
     place: 'EMB 1-152',
     color: '#0471A6',
     active: false,
+    description: 'Imperative Programming',
   },
   {
     event: 'COS 151',
@@ -32,6 +34,7 @@ const events = [
     place: 'EMB 1-152',
     color: '#048A81',
     active: false,
+    description: 'Imperative Programming',
   },
   {
     event: 'STK 120',
@@ -39,6 +42,7 @@ const events = [
     time: '10:30',
     place: 'EMB 2-152',
     color: '#C880B7',
+    description: 'Imperative Programming',
     active: false,
   },
   {
@@ -47,6 +51,7 @@ const events = [
     time: '12:30',
     place: 'Roos Hall',
     color: '#DD4B1A',
+    description: 'Imperative Programming',
     active: false,
   },
   {
@@ -56,13 +61,17 @@ const events = [
     place: 'AIM Lab 5',
     color: '#414066',
     active: false,
+    description: 'Imperative Programming',
   },
   {
     event: 'COS 132',
     type: 'T',
     time: '15:30',
+    startTime: '15:30',
+    endTime: '16:20',
     place: 'EMB 1-152',
     color: '#0471A6',
+    description: 'Imperative Programming',
     active: true,
   },
   {
@@ -72,6 +81,7 @@ const events = [
     place: 'Informatorium',
     color: '#048A81',
     active: false,
+    description: 'Imperative Programming',
   },
 ];
 
@@ -119,8 +129,12 @@ export default class DayViewLayout extends Component{
           >
             <View style={styles.mainContainer}>
               <View style={styles.drawer}>
-                {/*TODO Hey put me in my own component*/}
-                <Text>I am the drawer!</Text>
+                <Drawer 
+                  dragX={this.dX}
+                  maxX={drawerWidth} 
+                  minX={0} 
+                  event={events.filter(e => e.active)[0]}
+                />
               </View>
               <View style={styles.content}>
                 {this.renderEvents(events)}

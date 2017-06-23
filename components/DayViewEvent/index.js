@@ -3,8 +3,7 @@ import {
   TouchableOpacity,
   View,
   Text,
-  StyleSheet,
-  Animated
+  StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
 
@@ -21,76 +20,29 @@ class DayViewEvent extends Component {
   }
 
   render() {
-    const {color, time, place, event, type, active, hideType, style, dX, minX, maxX} = this.props;
-    const inputRange = [minX, maxX];
+    const {color, time, place, event, type, active, hideType, style} = this.props;
 
     const indicatorStyle = (active)?  [styles.indicator, styles.indicatorActive]:styles.indicator;
     const timeStyle = (active)? [styles.time, {color}] : styles.time;
     const eventStyle = (active)? [styles.event, {backgroundColor: color}] : [styles.event,{backgroundColor: color}];
     const lessonType = type.toLowerCase().startsWith('l');
     const typeEl = (lessonType || hideType)? null: (
-    
       <Text style={[styles.type, {}]}>{type}</Text>
     );
     return (
-      <Animated.View style={[
-          styles.container, 
-          style, {
-            height: dX.interpolate({
-              inputRange,
-              outputRange: [100, 50] //TODO make these values constants !
-            })
-          }
-        ]}
-      >
+      <View style={[styles.container, style]}>
         <View style={styles.bar} />
-        <Animated.Text style={[
-            timeStyle,
-            {
-              fontSize: dX.interpolate({
-                inputRange,
-                outputRange: [14, 12]
-              }),
-              paddingRight: dX.interpolate({
-                inputRange,
-                outputRange: [20, 10]
-              })
-            }
-          ]}
-        >
-          {time}
-        </Animated.Text>
+        <Text style={timeStyle}>{time}</Text>
         <View style={indicatorStyle} />
         <TouchableOpacity style={styles.detailsContainer} 
           onPress={this.showEvent}
           activeOpacity={0.5}
         >
-          <Animated.Text style={[
-              eventStyle, {
-                fontSize: dX.interpolate({
-                  inputRange,
-                  outputRange: [18, 16]
-                })
-              }
-            ]}
-          >
-            {event} {!lessonType && `(${type})`}
-          </Animated.Text>
-          <Animated.Text style={[
-              styles.place,
-              {
-                opacity: dX.interpolate({
-                  inputRange,
-                  outputRange: [1, 0]
-                })
-              }
-            ]}
-          >
-            {place}
-          </Animated.Text>
+          <Text style={eventStyle}>{event} {!lessonType && `(${type})`}</Text>
+          <Text style={[styles.place]}>{place}</Text>
           {typeEl}
         </TouchableOpacity>
-      </Animated.View>
+      </View>
     );
   }
 };
@@ -101,9 +53,6 @@ DayViewEvent.propTypes = {
   place: PropTypes.string.isRequired,
   event: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  dX: PropTypes.object.isRequired,
-  minX: PropTypes.number.isRequired,
-  maxX: PropTypes.number.isRequired,
   active: PropTypes.bool,
   hideType: PropTypes.bool,
 };
@@ -147,8 +96,6 @@ const styles = StyleSheet.create({
   time: {
     marginTop: 2,
     width: 55,
-    textAlign: 'right',
-    paddingRight: 20,
     fontFamily: 'Quicksand-Regular',
     fontSize: 16,
   },

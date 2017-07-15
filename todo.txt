@@ -1,0 +1,2 @@
+DayViewList
+  - base dimensions on percentages and add a min and a max

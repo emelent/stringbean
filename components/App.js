@@ -10,7 +10,7 @@ import {StackNavigator} from 'react-navigation';
 import DVL from './DayViewLayout';
 
 
-const version = '0.5.0';
+const version = '0.5.2';
 
 class App extends Component {
   render() {
@@ -41,7 +41,6 @@ const  navigationOptions = {
 export default StackNavigator({
   DayView: {
     screen:  App,
-    headerMode: 'none',
     navigationOptions: {
       title: 'Feed',
     },
